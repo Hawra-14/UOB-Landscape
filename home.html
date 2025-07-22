@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UOB Landslide</title>
+  <style>
+    :root {
+      --bg:#fff; --fg:#000; --accent:#004b8d; --font:Arial, sans-serif;
+    }
+    [data-theme="dark"] { --bg:#1e1e1e; --fg:#f1f1f1; --accent:#006bb3; --font:'Segoe UI',sans-serif; }
+    [data-theme="solar"] { --bg:#fdf6e3; --fg:#657b83; --accent:#b58900; --font:Georgia, serif; }
+    [data-theme="highcontrast"] { --bg:#000; --fg:#fff; --accent:#ffcc00; --font:Verdana, sans-serif; }
+ 
+    body {
+      margin:0;
+      font-family:var(--font);
+      background:var(--bg);
+      color:var(--fg);
+    }
+    nav {
+      position:fixed;
+      top:0; left:0; right:0;
+      background:var(--accent);
+      padding:10px 20px;
+      display:flex;
+      align-items:center;
+      z-index:100;
+    }
+    .logo-space {
+      width:120px; height:60px;
+      background:#fff;
+      border-radius:4px;
+      margin-right:20px;
+    }
+    nav ul {
+      flex:1;
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    nav a {
+      color:#fff;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .controls {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+ 
+    .dropdown {
+      position:relative;
+    }
+    .arabic-btn, .theme-btn {
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+ 
+    .theme-picker {
+      display:none;
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%);
+      background:#fff;
+      padding:5px;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+      gap:10px;
+      white-space:nowrap;
+      display:flex;
+      z-index:999;
+    }
+    .theme-picker.active {
+      display:flex;
+    }
+    .theme-option {
+      width:24px; height:24px;
+      border-radius:50%;
+      cursor:pointer;
+      border:2px solid #fff;
+    }
+    .theme-option[data-theme="default"] { background:#004b8d; }
+    .theme-option[data-theme="dark"] { background:#006bb3; }
+    .theme-option[data-theme="solar"] { background:#b58900; }
+    .theme-option[data-theme="highcontrast"] { background:#ffcc00; }
+ 
+    .controls input[type="search"] {
+      padding:5px 10px;
+      border:none;
+      border-radius:20px;
+    }
+ 
+    header {
+      position:relative;
+      height:90vh;
+      margin-top:60px;
+      overflow:hidden;
+    }
+    header::before {
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:8px;
+      background:var(--accent);
+    }
+    .slide {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background-size:cover;
+      background-position:center;
+      opacity:0;
+      transition:opacity 1s ease;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-end;
+    }
+    .slide.active {
+      opacity:1;
+    }
+    .slide .text {
+      margin:20px;
+      color:#fff;
+      font-size:2rem;
+      border-radius:4px;
+      text-shadow:0 0 3px rgba(0,0,0,0.5);
+    }
+ 
+    main {
+      padding:20px;
+    }
+ 
+    @media(max-width:768px) {
+      nav ul {
+        gap:20px;
+        flex-wrap:wrap;
+      }
+      .slide .text {
+        font-size:1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo-space" title="Logo"></div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Our plants</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Map</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="controls">
+      <button class="arabic-btn" onclick="translate()">عربي</button>
+      <div class="dropdown">
+        <button class="theme-btn" id="theme-btn">🎨</button>
+        <div class="theme-picker" id="theme-picker">
+          <div class="theme-option" data-theme="default"></div>
+          <div class="theme-option" data-theme="dark"></div>
+          <div class="theme-option" data-theme="solar"></div>
+          <div class="theme-option" data-theme="highcontrast"></div>
+        </div>
+      </div>
+      <input type="search" placeholder="Search…">
+    </div>
+  </nav>
+ 
+  <header id="hero"></header>
+  <main>
+    <h1>Welcome to UOB Landslide</h1>
+    <p>Main content starts here—no background behind this section.</p>
+  </main>
+ 
+  <script>
+    // Generate 20 slides with captions
+    const captions = Array.from({length:20}, (_,i)=>`Caption ${i+1}`);
+    const hero = document.getElementById('hero');
+    captions.forEach((text, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide' + (i===0? ' active':'' );
+      slide.style.backgroundImage = `url('img${i+1}.jpg')`;
+      slide.innerHTML = `<div class="text">${text}</div>`;
+      hero.appendChild(slide);
+    });
+ 
+    // Slide animation
+    const slides = document.querySelectorAll('.slide');
+    let idx = 0;
+    setInterval(() => {
+      slides[idx].classList.remove('active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+    }, 5000);
+ 
+    // Theme dropdown behavior
+    const btn = document.getElementById('theme-btn');
+    const picker = document.getElementById('theme-picker');
+ 
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      picker.classList.toggle('active');
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.dropdown')) {
+        picker.classList.remove('active');
+      }
+    });
+    picker.addEventListener('click', e => {
+      const t = e.target.dataset.theme;
+      if (t) {
+        document.documentElement.setAttribute('data-theme', t);
+        localStorage.setItem('theme', t);
+        picker.classList.remove('active');
+      }
+    });
+ 
+    // Apply saved theme on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme') || 'default';
+      document.documentElement.setAttribute('data-theme', saved);
+    });
+ 
+    function translate() {
+      alert('Arabic translation logic goes here.');
+    }
+  </script>
+</body>
+</html>
