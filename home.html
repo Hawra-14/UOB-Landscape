@@ -37,18 +37,47 @@
     <p>Main content starts here—no background behind this section.</p>
   </main>
  
+  <h2 style="text-align:center; margin-top: 40px;">Explore Our Landscape Locations</h2>
+  <div class="carousel-container">
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <!-- Image Set 1 -->
+        <img src="Building.jpg" alt="Building">
+        <img src="gate.jpg" alt="Gate">
+        <img src="Roadside.jpg" alt="Roadside">
+        <img src="Residential.jpg" alt="Residential">
+        <img src="Infrastructure.jpg" alt="Infrastructure">
+        <img src="Facilities.jpg" alt="Facilities">
+        <img src="Car park.jpg" alt="Car park">
+        <!-- Image Set 2 (Duplicate for seamless loop) -->
+        <img src="Building.jpg" alt="Building">
+        <img src="gate.jpg" alt="Gate">
+        <img src="Roadside.jpg" alt="Roadside">
+        <img src="Residential.jpg" alt="Residential">
+        <img src="Infrastructure.jpg" alt="Infrastructure">
+        <img src="Facilities.jpg" alt="Facilities">
+        <img src="Car park.jpg" alt="Car park">
+      </div>
+    </div>
+  </div>
+
   <script>
     // Generate 20 slides with captions
-    const captions = Array.from({length:20}, (_,i)=>`Caption ${i+1}`);
+    const captions = Array.from({ length: 20 }, (_, i) => `Caption ${i + 1}`);
     const hero = document.getElementById('hero');
+
     captions.forEach((text, i) => {
       const slide = document.createElement('div');
-      slide.className = 'slide' + (i===0? ' active':'' );
-      slide.style.backgroundImage = `url('img${i+1}.jpg')`;
+      slide.className = 'slide' + (i === 0 ? ' active' : '');
+      slide.style.backgroundImage = `url('img${i + 1}.jpg')`;
       slide.innerHTML = `<div class="text">${text}</div>`;
       hero.appendChild(slide);
     });
- 
+
+    const square = document.createElement('div');
+    square.className = 'overlay-square';
+    hero.appendChild(square);
+
     // Slide animation
     const slides = document.querySelectorAll('.slide');
     let idx = 0;
@@ -57,39 +86,45 @@
       idx = (idx + 1) % slides.length;
       slides[idx].classList.add('active');
     }, 5000);
- 
+
     // Theme dropdown behavior
     const btn = document.getElementById('theme-btn');
     const picker = document.getElementById('theme-picker');
- 
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      picker.classList.toggle('active');
-    });
-    document.addEventListener('click', e => {
-      if (!e.target.closest('.dropdown')) {
-        picker.classList.remove('active');
-      }
-    });
-    picker.addEventListener('click', e => {
-      const t = e.target.dataset.theme;
-      if (t) {
-        document.documentElement.setAttribute('data-theme', t);
-        localStorage.setItem('theme', t);
-        picker.classList.remove('active');
-      }
-    });
- 
+
+    if (btn && picker) {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        picker.classList.toggle('active');
+      });
+
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.dropdown')) {
+          picker.classList.remove('active');
+        }
+      });
+
+      picker.addEventListener('click', e => {
+        const t = e.target.dataset.theme;
+        if (t) {
+          document.documentElement.setAttribute('data-theme', t);
+          localStorage.setItem('theme', t);
+          picker.classList.remove('active');
+        }
+      });
+    }
+
     // Apply saved theme on load
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('theme') || 'default';
       document.documentElement.setAttribute('data-theme', saved);
     });
- 
+
+    // Placeholder translation logic
     function translate() {
       alert('Arabic translation logic goes here.');
     }
   </script>
+
   <footer>
     <div class="footer-container">
       <div class="footer-column">
