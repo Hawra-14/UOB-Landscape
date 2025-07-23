@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="default">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UOB Landslide</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
+  <nav>
     <div class="logo-space" title="Logo"></div>
     <ul>
       <li><a href="home.html">Home</a></li>
@@ -30,6 +30,46 @@
       <input type="search" placeholder="Search…">
     </div>
   </nav>
+ 
+  <script>
+
+    // Theme dropdown behavior
+    const btn = document.getElementById('theme-btn');
+    const picker = document.getElementById('theme-picker');
+
+    if (btn && picker) {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        picker.classList.toggle('active');
+      });
+
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.dropdown')) {
+          picker.classList.remove('active');
+        }
+      });
+
+      picker.addEventListener('click', e => {
+        const t = e.target.dataset.theme;
+        if (t) {
+          document.documentElement.setAttribute('data-theme', t);
+          localStorage.setItem('theme', t);
+          picker.classList.remove('active');
+        }
+      });
+    }
+
+    // Apply saved theme on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme') || 'default';
+      document.documentElement.setAttribute('data-theme', saved);
+    });
+
+    // Placeholder translation logic
+    function translate() {
+      alert('Arabic translation logic goes here.');
+    }
+  </script>
 
   <footer>
     <div class="footer-container">
@@ -56,6 +96,6 @@
       &copy; 2025 UOB Landslide. All rights reserved.
     </div>
   </footer>
-  
+
 </body>
 </html>
