@@ -324,3 +324,37 @@ footer {
   padding-top: 10px;
   color: #ccc;
 }
+
+/* Projects-specific sub-navigation */
+.projects-subnav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: var(--accent);
+  z-index: 90;
+}
+
+.projects-subnav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.projects-subnav a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.projects-subnav a:hover,
+.projects-subnav a.active {
+  background: var(--fg);
+  color: var(--accent);
+  border-radius: 4px;
+}
