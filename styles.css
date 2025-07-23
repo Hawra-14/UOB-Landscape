@@ -464,7 +464,44 @@ main {
         font-size: 12px;
     }
 }
- 
+ /* Projects-specific sub-navigation with underline effect */
+.projects-subnav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: var(--accent);
+  z-index: 90;
+}
+.projects-subnav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+}
+.projects-subnav a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+}
+.projects-subnav a:hover {
+  border-bottom: 3px solid rgba(255,255,255,0.7);
+}
+.projects-subnav a.active {
+  border-bottom: 3px solid #fff;
+}
+
+/* Hide both sections by default, shown via JS */
+.projects-section {
+  display: none;
+  padding: 80px 20px 20px; /* account for fixed nav + subnav */
+}
+
 footer {
   background: var(--accent);
   color: #fff;
