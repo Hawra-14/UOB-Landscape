@@ -78,11 +78,13 @@
           <span class="search-icon">🔍</span>
           <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterGrid()" />
       </div>
-      <section class="plants-layout">
-        <h2>Our plants</h2>
-      </section>  
+      
     </div>
-    
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="indoor">Indoor</button>
+      <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+    </div>
     <div class="grid-plant-container">
         <div class="grid-plant">
             <img src="building.jpg" alt="Image 1">

@@ -153,7 +153,7 @@ nav a {
 
 .search-bar {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .search-input-wrapper {
@@ -632,6 +632,28 @@ main {
   border-radius: 4px;
 }
 
+.filters {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background-color: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--accent);
+  color: white
+}
+
 .grid-section {
   padding: 100px 20px;
   max-width: 1200px;
@@ -685,7 +707,7 @@ main {
 }
 
 .grid-plant h3 {
-  margin-top: 12px;
+  /* margin-top: 12px; */
   font-size: 1.2rem;
   color: var(--accent);
 }
@@ -738,12 +760,6 @@ main {
   margin-top: 100px;
   margin-left: 50px;
   /* padding: 70px; */
-}
-
-.plants-layout{
-  text-align: center;
-  margin-top: 30px;
-  margin-left: 50px;
 }
 
 footer {
