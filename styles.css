@@ -664,8 +664,8 @@ main {
 }
 
 .grid-item:hover {
-  /* transform: translateY(-5px); */
-  transform: scale(1.05); /* Zoom in slightly on hover */
+  transform: translateY(-7px);
+  /*transform: scale(1.05);  Zoom in slightly on hover */
 }
 
 .grid-item img {
@@ -694,7 +694,7 @@ main {
 
 .plants-layout{
   text-align: center;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-left: 50px;
 }
 

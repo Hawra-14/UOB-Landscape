@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UOB Landslide</title>
+  <title>UOB Landscape</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -72,15 +72,49 @@
     }
   </script>
 
-  <section class="plants-layout">
-    <h2>Our plants</h2>
-  </section>
+  <main class="grid-section">
+    <div class="search-bar">
+      <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search by title..." oninput="filterGrid()" />
+      </div>
+      <section class="plants-layout">
+        <h2>Our plants</h2>
+      </section>  
+    </div>
+      <div class="grid-container">
+          <div class="grid-item">
+              <img src="image1.jpg" alt="Image 1">
+              <h3>Title 1</h3>
+          </div>
+          <div class="grid-item">
+              <img src="image2.jpg" alt="Image 2">
+              <h3>Title 2</h3>
+          </div>
+          <div class="grid-item">
+              <img src="image3.jpg" alt="Image 3">
+              <h3>Title 3</h3>
+          </div>
+          <div class="grid-item">
+              <img src="image4.jpg" alt="Image 4">
+              <h3>Title 4</h3>
+          </div>
+              <div class="grid-item">
+              <img src="image5.jpg" alt="Image 5">
+              <h3>Title 5</h3>
+          </div>
+          <div class="grid-item">
+              <img src="image6.jpg" alt="Image 6">
+              <h3>Title 6</h3>
+          </div>
+      </div>
+  </main>
 
   <footer>
     <div class="footer-container">
       <div class="footer-column">
-        <h4>About UOB Landslide</h4>
-        <p>Empowering knowledge on geological safety and landslide monitoring.</p>
+        <h4>About UOB Landscape</h4>
+        <p>Empowering knowledge on geological safety and Landscape monitoring.</p>
       </div>
       <div class="footer-column">
         <h4>Quick Links</h4>
@@ -98,7 +132,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2025 UOB Landslide. All rights reserved.
+      &copy; 2025 UOB Landscape. All rights reserved.
     </div>
   </footer>
 
