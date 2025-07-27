@@ -10,7 +10,7 @@
   <div class="logo-space" title="Logo">
     <img src="UOB-new-logo.png" alt="University of Bahrain" />
   </div>
-    <nav>
+  <nav>
     <ul>
       <li><a href="home.html">Home</a></li>
       <li><a href="ourPlants.html">Our plants</a></li>
@@ -32,16 +32,8 @@
       <input type="search" placeholder="Search…">
     </div>
   </nav>
-  <main>
-    <section class="about-layout">
-      <h2>Mission</h2>
-      <h2>FAQs</h2>
-      <h2>Our Work</h2>  
-    </section>
-    
-  </main>
+ 
   <script>
-
     // Theme dropdown behavior
     const btn = document.getElementById('theme-btn');
     const picker = document.getElementById('theme-picker');
@@ -80,6 +72,41 @@
     }
   </script>
 
+    <main class="grid-section">
+        <div class="search-bar">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by Name..." oninput="filterGrid()" />
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="S45.jpg" alt="Image 1">
+                <h3>S45 E-Learning Center</h3>
+            </div>
+            <div class="grid-item">
+                <img src="image2.jpg" alt="Image 2">
+                <h3>Title 2</h3>
+            </div>
+            <div class="grid-item">
+                <img src="image3.jpg" alt="Image 3">
+                <h3>Title 3</h3>
+            </div>
+            <div class="grid-item">
+                <img src="image4.jpg" alt="Image 4">
+                <h3>Title 4</h3>
+            </div>
+                <div class="grid-item">
+                <img src="image5.jpg" alt="Image 5">
+                <h3>Title 5</h3>
+            </div>
+            <div class="grid-item">
+                <img src="image6.jpg" alt="Image 6">
+                <h3>Title 6</h3>
+            </div>
+        </div>
+    </main>
+
   <footer>
     <div class="footer-container">
       <div class="footer-column">
@@ -105,6 +132,5 @@
       &copy; 2025 UOB Landslide. All rights reserved.
     </div>
   </footer>
-
 </body>
 </html>

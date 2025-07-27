@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="logo-space" title="Logo">
+    <img src="UOB-new-logo.png" alt="University of Bahrain" />
+  </div>
   <nav>
-    <div class="logo-space" title="Logo"></div>
     <ul>
       <li><a href="home.html">Home</a></li>
       <li><a href="ourPlants.html">Our plants</a></li>
@@ -33,7 +35,7 @@
  
   <header id="hero"></header>
   <main>
-    <h1>Welcome to UOB Landslide</h1>
+    <h1>Welcome to UOB Landscape</h1>
     <p>Main content starts here—no background behind this section.</p>
   </main>
  
@@ -42,21 +44,92 @@
     <div class="carousel-wrapper">
       <div class="carousel-track">
         <!-- Image Set 1 -->
-        <img src="Building.jpg" alt="Building">
-        <img src="gate.jpg" alt="Gate">
-        <img src="Roadside.jpg" alt="Roadside">
-        <img src="Residential.jpg" alt="Residential">
-        <img src="Infrastructure.jpg" alt="Infrastructure">
-        <img src="Facilities.jpg" alt="Facilities">
-        <img src="Car park.jpg" alt="Car park">
+        <div class="carousel-item">
+          <a href="CarPark.html">
+            <img src="Car park.jpg" alt="Car park"></a>
+          <div class="carousel-title">Car Park</div>
+        </div>
+        
+        <div class="carousel-item">
+          <a href="Buildings.html">
+            <img src="Building.jpg" alt="Building"></a>
+            <div class="carousel-title">Buildings</div>
+        </div>
+        
+        <div class="carousel-item">
+          <a href="Gates.html">
+            <img src="gate.jpg" alt="Gate"></a>
+          <div class="carousel-title">Gates</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Roadside.html">
+            <img src="Roadside.jpg" alt="Roadside"></a>
+            <div class="carousel-title">Roadside</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Residential.html">
+            <img src="Residential.jpg" alt="Residential"></a>
+            <div class="carousel-title">Residential</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Infrastructure.html">
+            <img src="Infrastructure.jpg" alt="Infrastructure"></a>
+            <div class="carousel-title">Infrastructure</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Facilities.html">
+            <img src="Facilities.jpg" alt="Facilities"></a>
+            <div class="carousel-title">Facilities</div>
+        </div>
+
+        
         <!-- Image Set 2 (Duplicate for seamless loop) -->
-        <img src="Building.jpg" alt="Building">
-        <img src="gate.jpg" alt="Gate">
-        <img src="Roadside.jpg" alt="Roadside">
-        <img src="Residential.jpg" alt="Residential">
-        <img src="Infrastructure.jpg" alt="Infrastructure">
-        <img src="Facilities.jpg" alt="Facilities">
-        <img src="Car park.jpg" alt="Car park">
+        <div class="carousel-item">
+          <a href="CarPark.html">
+            <img src="Car park.jpg" alt="Car park"></a>
+          <div class="carousel-title">Car Park</div>
+        </div>
+        
+        <div class="carousel-item">
+          <a href="Buildings.html">
+            <img src="Building.jpg" alt="Building"></a>
+            <div class="carousel-title">Buildings</div>
+        </div>
+        
+        <div class="carousel-item">
+          <a href="Gates.html">
+            <img src="gate.jpg" alt="Gate"></a>
+          <div class="carousel-title">Gates</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Roadside.html">
+            <img src="Roadside.jpg" alt="Roadside"></a>
+            <div class="carousel-title">Roadside</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Residential.html">
+            <img src="Residential.jpg" alt="Residential"></a>
+            <div class="carousel-title">Residential</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Infrastructure.html">
+            <img src="Infrastructure.jpg" alt="Infrastructure"></a>
+            <div class="carousel-title">Infrastructure</div>
+        </div>
+
+        <div class="carousel-item">
+          <a href="Facilities.html">
+            <img src="Facilities.jpg" alt="Facilities"></a>
+            <div class="carousel-title">Facilities</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -76,6 +149,12 @@
 
     const square = document.createElement('div');
     square.className = 'overlay-square';
+
+    const label = document.createElement('div');
+    label.className = 'overlay-label';
+    label.innerHTML = 'University of Bahrain<br>Landscapes';
+
+    square.appendChild(label);
     hero.appendChild(square);
 
     // Slide animation

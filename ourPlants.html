@@ -7,15 +7,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav>
-    <div class="logo-space" title="Logo"></div>
-    <ul>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="ourPlants.html">Our plants</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="map.html">Map</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+  <div class="logo-space" title="Logo">
+    <img src="UOB-new-logo.png" alt="University of Bahrain" />
+  </div>
+    <nav>
+        <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ourPlants.html">Our plants</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="about.html">About</a></li>
+        </ul>
     <div class="controls">
       <button class="arabic-btn" onclick="translate()">عربي</button>
       <div class="dropdown">
@@ -30,9 +32,8 @@
       <input type="search" placeholder="Search…">
     </div>
   </nav>
- 
-  <script>
 
+  <script>
     // Theme dropdown behavior
     const btn = document.getElementById('theme-btn');
     const picker = document.getElementById('theme-picker');
@@ -70,6 +71,10 @@
       alert('Arabic translation logic goes here.');
     }
   </script>
+
+  <section class="plants-layout">
+    <h2>Our plants</h2>
+  </section>
 
   <footer>
     <div class="footer-container">

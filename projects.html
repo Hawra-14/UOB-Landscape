@@ -8,8 +8,10 @@
 </head>
 <body>
   <!-- Global Navigation -->
+  <div class="logo-space" title="Logo">
+    <img src="UOB-new-logo.png" alt="University of Bahrain" />
+  </div>
   <nav>
-    <div class="logo-space" title="Logo"></div>
     <ul>
       <li><a href="home.html">Home</a></li>
       <li><a href="ourPlants.html">Our plants</a></li>
@@ -226,6 +228,43 @@
         window.location.hash = '#reports';
       });
     });
+
+    // Theme dropdown behavior
+    const btn = document.getElementById('theme-btn');
+    const picker = document.getElementById('theme-picker');
+
+    if (btn && picker) {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        picker.classList.toggle('active');
+      });
+
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.dropdown')) {
+          picker.classList.remove('active');
+        }
+      });
+
+      picker.addEventListener('click', e => {
+        const t = e.target.dataset.theme;
+        if (t) {
+          document.documentElement.setAttribute('data-theme', t);
+          localStorage.setItem('theme', t);
+          picker.classList.remove('active');
+        }
+      });
+    }
+
+    // Apply saved theme on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('theme') || 'default';
+      document.documentElement.setAttribute('data-theme', saved);
+    });
+
+    // Placeholder translation logic
+    function translate() {
+      alert('Arabic translation logic goes here.');
+    }
   </script>
 
   <!-- Theme & translate scripts omitted for brevity… -->
