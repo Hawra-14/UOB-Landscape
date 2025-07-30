@@ -81,9 +81,22 @@
       
     </div>
     <div class="filters">
+      <select class="filter-btn" id="plant-filter" onchange="filterPlants(this.value)">
+        <option value="" disabled selected>Sort by</option>
+        <option value="A-Z">A-Z</option>
+      </select>
+
+      <select class="filter-btn" id="plant-filter" onchange="filterPlants(this.value)">
+        <option value="" disabled selected>Filter by Type</option>
+        <option value="trees">Trees</option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+      
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="indoor">Indoor</button>
       <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+
     </div>
     <div class="grid-plant-container">
         <div class="grid-plant">

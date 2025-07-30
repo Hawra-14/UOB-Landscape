@@ -45,153 +45,160 @@
   <main>
     <section id="before-after" class="projects-section">
       <h1>Before & After Projects</h1>
-  </script>
-  </script>
-    <div class="container">
-      <div class="slider-container" id="sliderContainer">
-          <!-- Before Image -->
-          <div class="before-image">
-              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Before - Empty backyard">
-              <div class="label before-label">Before</div>
-          </div>
-
-          <!-- After Image -->
-          <div class="after-image" id="afterImage">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="After - Beautiful landscaped backyard">
-              <div class="label after-label">After</div>
-          </div>
-
-          <!-- Slider Line and Handle -->
-          <div class="slider-line" id="sliderLine">
-              <div class="slider-handle" id="sliderHandle"></div>
-          </div>
-
-          <!-- Instructions -->
-          <div class="instructions">Drag to compare</div>
+      <!-- Filter Buttons -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="S45">S45</button>
+        <button class="filter-btn" data-filter="S40">S40</button>
+        <button class="filter-btn" data-filter="S41">S41</button>
+        <button class="filter-btn" data-filter="S47">S47</button>
+        <button class="filter-btn" data-filter="S50">S50</button>
+        <button class="filter-btn" data-filter="S51">S51</button>
+        <button class="filter-btn" data-filter="CarPark">S48</button>
       </div>
 
-      <!-- Additional Content -->
-      <div class="content">
-          <h2>Transform Your Outdoor Space</h2>
-          <p>See how professional landscaping can completely transform your backyard from an empty space into a beautiful outdoor living area.</p>
-      </div>
-  </div>
+      <!-- Filtered Content Sections -->
+      <div id="project-contents">
 
-  <script>
-      class BeforeAfterSlider {
+        <div class="project-filter-section" data-type="S45" style="display: block;">
+          <h3>S45 Project</h3>
+          <div class="container">
+            <div class="slider-container" id="sliderContainer">
+              <div class="instructions">Drag the sliders to compare all three stages</div>
+              <div class="image-layer proposal-image">
+                <img src="proposal.png" alt="Proposal">
+                <div class="label proposal-label">Proposal</div>
+              </div>
+              <div class="image-layer after-image" id="afterImage">
+                <img src="after.jpg" alt="After">
+                <div class="label after-label">After</div>
+              </div>
+              <div class="image-layer before-image" id="beforeImage">
+                <img src="before.jpg" alt="Before">
+                <div class="label before-label">Before</div>
+              </div>
+              <div class="slider-line slider-line-1" id="sliderLine1" style="left: 33%;">
+                <div class="slider-handle slider-handle-1" id="sliderHandle1"></div>
+              </div>
+              <div class="slider-line slider-line-2" id="sliderLine2" style="left: 66%;">
+                <div class="slider-handle slider-handle-2" id="sliderHandle2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-filter-section" data-type="S40">
+          <h3>S40 Project</h3>
+        </div>
+
+        <div class="project-filter-section" data-type="S41">
+          <h3>S41 Project</h3>
+        </div>
+
+        <div class="project-filter-section" data-type="S47">
+          <h3>S47 Project</h3>
+        </div>
+
+        <div class="project-filter-section" data-type="S50">
+          <h3>S50 Project</h3>
+        </div>
+
+        <div class="project-filter-section" data-type="S51">
+          <h3>S51 Project</h3>
+        </div>
+
+        <div class="project-filter-section" data-type="CarPark">
+          <h3>S48 Project</h3>
+        </div>
+      </div>
+
+      <script>
+        class ThreeImageSlider {
           constructor(containerId) {
-              this.container = document.getElementById(containerId);
-              this.sliderLine = document.getElementById('sliderLine');
-              this.sliderHandle = document.getElementById('sliderHandle');
-              this.afterImage = document.getElementById('afterImage');
-              
-              this.isDragging = false;
-              this.sliderPosition = 50; // Start at 50%
-              
-              this.init();
+            this.container = document.getElementById(containerId);
+            this.sliderLine1 = document.getElementById('sliderLine1');
+            this.sliderLine2 = document.getElementById('sliderLine2');
+            this.sliderHandle1 = document.getElementById('sliderHandle1');
+            this.sliderHandle2 = document.getElementById('sliderHandle2');
+            this.beforeImage = document.getElementById('beforeImage');
+            this.afterImage = document.getElementById('afterImage');
+
+            this.isDragging = false;
+            this.activeSlider = null;
+
+            this.slider1Position = 33;
+            this.slider2Position = 66;
+
+            this.init();
           }
-          
+
           init() {
-              this.bindEvents();
-              this.updateSlider();
+            this.bindEvents();
+            this.updateSliders();
           }
-          
+
           bindEvents() {
-              // Mouse events
-              this.sliderHandle.addEventListener('mousedown', this.handleMouseDown.bind(this));
-              this.container.addEventListener('mousedown', this.handleContainerMouseDown.bind(this));
-              document.addEventListener('mousemove', this.handleMouseMove.bind(this));
-              document.addEventListener('mouseup', this.handleMouseUp.bind(this));
-              
-              // Touch events
-              this.sliderHandle.addEventListener('touchstart', this.handleTouchStart.bind(this));
-              this.container.addEventListener('touchstart', this.handleContainerTouchStart.bind(this));
-              document.addEventListener('touchmove', this.handleTouchMove.bind(this));
-              document.addEventListener('touchend', this.handleTouchEnd.bind(this));
-              
-              // Prevent context menu
-              this.container.addEventListener('contextmenu', (e) => e.preventDefault());
+            this.sliderHandle1.addEventListener('mousedown', (e) => this.startDrag(e, 1));
+            this.sliderHandle2.addEventListener('mousedown', (e) => this.startDrag(e, 2));
+            document.addEventListener('mousemove', (e) => this.drag(e));
+            document.addEventListener('mouseup', () => this.stopDrag());
+
+            this.sliderHandle1.addEventListener('touchstart', (e) => this.startDrag(e, 1), { passive: false });
+            this.sliderHandle2.addEventListener('touchstart', (e) => this.startDrag(e, 2), { passive: false });
+            document.addEventListener('touchmove', (e) => this.drag(e), { passive: false });
+            document.addEventListener('touchend', () => this.stopDrag());
           }
-          
-          handleMouseDown(e) {
-              this.isDragging = true;
-              this.container.style.cursor = 'grabbing';
-              e.preventDefault();
+
+          startDrag(e, sliderNumber) {
+            this.isDragging = true;
+            this.activeSlider = sliderNumber;
+
+            if (sliderNumber === 1) {
+              this.sliderLine1.style.zIndex = '50';
+              this.sliderLine2.style.zIndex = '40';
+            } else {
+              this.sliderLine2.style.zIndex = '50';
+              this.sliderLine1.style.zIndex = '40';
+            }
+
+            e.preventDefault();
           }
-          
-          handleContainerMouseDown(e) {
-              if (e.target === this.container || e.target.tagName === 'IMG') {
-                  this.isDragging = true;
-                  this.container.style.cursor = 'grabbing';
-                  this.updateSliderFromEvent(e);
-                  e.preventDefault();
-              }
+
+          drag(e) {
+            if (!this.isDragging) return;
+
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const rect = this.container.getBoundingClientRect();
+            const x = clientX - rect.left;
+            const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+            if (this.activeSlider === 1) this.slider1Position = percentage;
+            else if (this.activeSlider === 2) this.slider2Position = percentage;
+
+            this.updateSliders();
           }
-          
-          handleTouchStart(e) {
-              this.isDragging = true;
-              e.preventDefault();
+
+          stopDrag() {
+            this.isDragging = false;
+            this.activeSlider = null;
           }
-          
-          handleContainerTouchStart(e) {
-              if (e.target === this.container || e.target.tagName === 'IMG') {
-                  this.isDragging = true;
-                  this.updateSliderFromTouchEvent(e);
-                  e.preventDefault();
-              }
+
+          updateSliders() {
+            this.sliderLine1.style.left = `${this.slider1Position}%`;
+            this.sliderLine2.style.left = `${this.slider2Position}%`;
+
+            this.beforeImage.style.clipPath = `polygon(0 0, ${this.slider1Position}% 0, ${this.slider1Position}% 100%, 0 100%)`;
+
+            const left = Math.min(this.slider1Position, this.slider2Position);
+            const right = Math.max(this.slider1Position, this.slider2Position);
+            this.afterImage.style.clipPath = `polygon(${left}% 0, ${right}% 0, ${right}% 100%, ${left}% 100%)`;
           }
-          
-          handleMouseMove(e) {
-              if (!this.isDragging) return;
-              this.updateSliderFromEvent(e);
-          }
-          
-          handleTouchMove(e) {
-              if (!this.isDragging) return;
-              this.updateSliderFromTouchEvent(e);
-              e.preventDefault();
-          }
-          
-          handleMouseUp() {
-              this.isDragging = false;
-              this.container.style.cursor = 'col-resize';
-          }
-          
-          handleTouchEnd() {
-              this.isDragging = false;
-          }
-          
-          updateSliderFromEvent(e) {
-              const rect = this.container.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-              this.sliderPosition = percentage;
-              this.updateSlider();
-          }
-          
-          updateSliderFromTouchEvent(e) {
-              const rect = this.container.getBoundingClientRect();
-              const x = e.touches[0].clientX - rect.left;
-              const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-              this.sliderPosition = percentage;
-              this.updateSlider();
-          }
-          
-          updateSlider() {
-              // Update slider line position
-              this.sliderLine.style.left = `${this.sliderPosition}%`;
-              
-              // Update after image clip path
-              this.afterImage.style.clipPath = `polygon(${this.sliderPosition}% 0%, 100% 0%, 100% 100%, ${this.sliderPosition}% 100%)`;
-          }
-      }
-      
-      // Initialize the slider when the page loads
-      document.addEventListener('DOMContentLoaded', function() {
-          new BeforeAfterSlider('sliderContainer');
-      });
-  </script>
-      </section>
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          new ThreeImageSlider('sliderContainer');
+        });
+      </script>
+    </section>
 
     <section id="reports" class="projects-section">
       <h1>Reports</h1>
@@ -226,6 +233,55 @@
       document.getElementById('tab-reports').addEventListener('click', e => {
         e.preventDefault();
         window.location.hash = '#reports';
+      });
+      // Hide all project sections at load
+      // filterSections.forEach(section => {
+      //   section.style.display = 'none';
+      // });
+      // filterButtons.forEach(b => b.classList.remove('active'));
+      filterSections.forEach(section => {
+        section.style.display = (section.dataset.type === "S45") ? "block" : "none";
+      });
+
+      filterButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.filter === "S45");
+      });
+    });
+
+        // Project filter buttons logic
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterSections = document.querySelectorAll('.project-filter-section');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.filter;
+
+        filterButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+
+        filterSections.forEach(section => {
+          section.style.display = (section.dataset.type === selected) ? 'block' : 'none';
+        });
+      });
+    });
+
+    
+    // Subnav tabs switch logic
+    const tabs = document.querySelectorAll('.projects-subnav a');
+    const sections = document.querySelectorAll('main > section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const targetId = tab.getAttribute('href').substring(1);
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        sections.forEach(s => {
+          s.style.display = (s.id === targetId) ? 'block' : 'none';
+        });
       });
     });
 
