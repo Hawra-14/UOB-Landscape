@@ -46,19 +46,66 @@
     <section id="before-after" class="projects-section">
       <h1>Before & After Projects</h1>
       <!-- Filter Buttons -->
-      <div class="filters">
-        <button class="filter-btn active" data-filter="S45">S45</button>
-        <button class="filter-btn" data-filter="S40">S40</button>
-        <button class="filter-btn" data-filter="S41">S41</button>
-        <button class="filter-btn" data-filter="S47">S47</button>
-        <button class="filter-btn" data-filter="S50">S50</button>
-        <button class="filter-btn" data-filter="S51">S51</button>
-        <button class="filter-btn" data-filter="CarPark">S48</button>
-      </div>
+    <div class="project-filters">
+        <button class="project-filter-btn active" data-filter="S45">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 45</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S40">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 40</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S41">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 41</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S47">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 47</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S50">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 50</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S51">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 51</div>
+        </button>
+        <button class="project-filter-btn" data-filter="CarPark">
+            <div class="image-area">
+            </div>
+            <div class="label">Car Park</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S52">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 52</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S53">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 53</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S54">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 54</div>
+        </button>
+        <button class="project-filter-btn" data-filter="S55">
+            <div class="image-area">
+            </div>
+            <div class="label">Section 55</div>
+        </button>
+    </div>
 
       <!-- Filtered Content Sections -->
       <div id="project-contents">
-
         <div class="project-filter-section" data-type="S45" style="display: block;">
           <h3>S45 Project</h3>
           <div class="container">
@@ -86,30 +133,36 @@
           </div>
         </div>
 
-        <div class="project-filter-section" data-type="S40">
-          <h3>S40 Project</h3>
+        <div class="project-filter-section" data-type="S40" style="display: none;">
+            <h3>S40 Project</h3>
+            <p>Content for Section 40 project goes here...</p>
         </div>
 
-        <div class="project-filter-section" data-type="S41">
-          <h3>S41 Project</h3>
+        <div class="project-filter-section" data-type="S41" style="display: none;">
+            <h3>S41 Project</h3>
+            <p>Content for Section 41 project goes here...</p>
         </div>
 
-        <div class="project-filter-section" data-type="S47">
-          <h3>S47 Project</h3>
+        <div class="project-filter-section" data-type="S47" style="display: none;">
+            <h3>S47 Project</h3>
+            <p>Content for Section 47 project goes here...</p>
         </div>
 
-        <div class="project-filter-section" data-type="S50">
-          <h3>S50 Project</h3>
+        <div class="project-filter-section" data-type="S50" style="display: none;">
+            <h3>S50 Project</h3>
+            <p>Content for Section 50 project goes here...</p>
         </div>
 
-        <div class="project-filter-section" data-type="S51">
-          <h3>S51 Project</h3>
+        <div class="project-filter-section" data-type="S51" style="display: none;">
+            <h3>S51 Project</h3>
+            <p>Content for Section 51 project goes here...</p>
         </div>
 
-        <div class="project-filter-section" data-type="CarPark">
-          <h3>S48 Project</h3>
+        <div class="project-filter-section" data-type="CarPark" style="display: none;">
+            <h3>S48 Project (Car Park)</h3>
+            <p>Content for Car Park project goes here...</p>
         </div>
-      </div>
+    </div>
 
       <script>
         class ThreeImageSlider {
@@ -249,7 +302,7 @@
     });
 
         // Project filter buttons logic
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.project-filter-btn');
     const filterSections = document.querySelectorAll('.project-filter-section');
 
     filterButtons.forEach(button => {
